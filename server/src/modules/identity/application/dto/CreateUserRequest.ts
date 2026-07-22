@@ -1,0 +1,5 @@
+export interface CreateUserRequest {
+  readonly username: string;
+  readonly email: string;
+  readonly password?: string;
+}
