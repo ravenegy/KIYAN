@@ -1,0 +1,8 @@
+{
+  "name": "KIYAN Factory ERP",
+  "description": "Offline-First Manufacturing ERP for KIYAN Sesame and Tahini production.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

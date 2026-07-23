@@ -1,0 +1,6 @@
+export enum ProductionPriority {
+  Low = 'Low',
+  Normal = 'Normal',
+  High = 'High',
+  Urgent = 'Urgent'
+}

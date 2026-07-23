@@ -1,0 +1,5 @@
+#!/bin/bash
+sed -i 's/export interface IStockApplicationService {/export interface IStockApplicationService {\n  getStockLevels(inventoryItemId: string): Promise<Result<ReadonlyArray<StockLevelDto>>>;/g' server/src/modules/inventory/application/services/IStockApplicationService.ts
+sed -i '1i import { StockLevelDto } from "../dto/StockLevelDto";' server/src/modules/inventory/application/services/IStockApplicationService.ts
+
+sed -i '/async adjustStock/i \  async getStockLevels(inventoryItemId: string): Promise<Result<ReadonlyArray<StockLevelDto>>> {\n    const { GetStockLevelsQuery } = await import("../../queries/GetStockLevelsQuery");\n    const { InventoryItemId } = await import("../../../domain/shared/InventoryItemId");\n    const { ResultFactory } = await import("../../../../../core");\n    const idResult = InventoryItemId.create(inventoryItemId);\n    if (idResult.isFailure) return ResultFactory.failure(idResult.error!, idResult.errors ? [...idResult.errors] : undefined);\n    return this.mediator.query(new GetStockLevelsQuery(idResult.value!));\n  }\n' server/src/modules/inventory/application/services/impl/StockApplicationService.ts
